@@ -5,7 +5,7 @@ function AddressBook() {
 }
 
 AddressBook.prototype.addContact = function(contact) {
-  contact.id = assignId();
+  contact.id = this.assignId();
   this.contacts[contact.firstName] = contact; 
 }
 
@@ -39,3 +39,18 @@ function Contact(firstName, lastName, phoneNumber) {
 Contact.prototype.fullName = function() {
   return this.firsName + " " + this.lastName;
 }
+
+//User Interface Logic -------
+let addressBook = new AddressBook();
+
+$(document).ready(function() {
+  $("form#new-contact").submit(function(event) {
+    event.preventDefault();
+    const inputtedFirstName = $("input#new-first-name").val();
+    const inputtedLastName = $("input#new-last-name").val();
+    const inputtedPhoneNumber = $("input#new-phone-number").val();
+    let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    addressBook.addContact(newContact);
+    console.log(addressBook.contacts);
+  });
+});
