@@ -90,6 +90,5 @@ $(document).ready(function() {
     let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
-    console.log(addressBook.contacts);
   });
 });
